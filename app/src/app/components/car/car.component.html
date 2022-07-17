@@ -1,0 +1,8 @@
+<p>car works!</p>
+
+<a routerLink="/saveCar">Add</a>
+<ul>
+    <li *ngFor="let car of model">
+        <a routerLink="/car/{{car.id}}"> {{car.id}} : {{car.name}} </a>
+    </li>
+</ul>

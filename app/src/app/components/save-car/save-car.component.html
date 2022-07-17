@@ -1,0 +1,31 @@
+<p>save-car works!</p>
+
+<form #myForm="ngForm" (ngSubmit)="Save()">
+
+    <input type="hidden" name="id" [(ngModel)]="model.id">
+    <input name="name" #name="ngModel" [(ngModel)]="model.name" minlength="3" required>
+
+    <div *ngIf="name.errors && name.touched">
+        <span *ngIf="name.hasError('required')">name is required</span>
+        <span *ngIf="name.hasError('minlength')">minlength is 3</span>
+    </div>
+
+    <button>save</button>
+</form>
+
+
+-------------------------------------------------------------------------------------------
+
+<form [formGroup]="f" (ngSubmit)="Save()">
+
+    <input type="hidden" name="id" formControlName="id">
+    <input name="name" formControlName="name">
+
+    <div *ngIf="f.get('name').errors && f.get('name').touched">
+        <span *ngIf="f.get('name').hasError('required')">name is required</span>
+        <span *ngIf="f.get('name').hasError('minlength')">minlength is 3</span>
+    </div>
+
+    <button>save</button>
+</form>
+
